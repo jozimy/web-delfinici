@@ -1,0 +1,123 @@
+.about {
+  background: #f8fafc;
+}
+
+.about__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.about__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.about__p {
+  color: var(--c-text-mid);
+  line-height: 1.8;
+  margin-top: 16px;
+  font-size: 1.02rem;
+}
+
+.about__p:first-of-type { margin-top: 24px; }
+
+.about__cta {
+  margin-top: 32px;
+  align-self: flex-start;
+}
+
+/* Grid side */
+.about__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about__grid-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: .8rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--c-text-light);
+}
+
+.about__activities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.activity-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1.5px solid var(--c-border);
+  border-radius: 100px;
+  padding: 10px 18px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: .95rem;
+  color: var(--c-text);
+  cursor: default;
+  transition: border-color .2s, background .2s, transform .2s, box-shadow .2s;
+}
+
+.activity-chip span { font-size: 1.2rem; line-height: 1; }
+
+.activity-chip:hover {
+  border-color: var(--c-sky);
+  background: #f0f9ff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Quote */
+.about__quote-card {
+  background: linear-gradient(135deg, var(--c-ocean-dark), var(--c-ocean));
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about__quote-mark {
+  font-family: Georgia, serif;
+  font-size: 6rem;
+  line-height: .6;
+  color: rgba(255,255,255,.15);
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  pointer-events: none;
+}
+
+.about__quote-card p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.about__quote-author {
+  margin-top: 14px;
+  font-size: .88rem;
+  color: rgba(255,255,255,.55);
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 860px) {
+  .about__layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

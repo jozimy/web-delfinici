@@ -1,0 +1,99 @@
+import { useState } from 'react'
+import { useInView } from 'react-intersection-observer'
+import './Contact.css'
+
+const INFO = [
+  { icon: '✉️', label: 'E-mail',   value: 'delfinici@delfinici.sk' },
+  { icon: '📍', label: 'Adresa',   value: 'Janka Alexyho 9, 841 01, Slovensko' },
+]
+
+export default function Contact() {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 })
+  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [sent, setSent] = useState(false)
+
+  const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }))
+
+  const submit = (e) => {
+    e.preventDefault()
+    setSent(true)
+  }
+
+  return (
+    <section id="kontakt" className="section contact">
+      <div className="container">
+        <div ref={ref} className={`contact__head fade-up${inView ? ' visible' : ''}`}>
+          <div className="section-label">📬 Kontakt</div>
+          <h2 className="section-title">Ozvi sa nám</h2>
+          <p className="section-sub">
+            Zaujíma ťa niečo, chceš sa pripojiť alebo len zistiť, kedy bude
+            ďalší tréning? Napíš nám!
+          </p>
+        </div>
+
+        <div className="contact__grid">
+          <div className={`contact__info fade-up fade-up-delay-1${inView ? ' visible' : ''}`}>
+            {INFO.map(item => (
+              <div key={item.label} className="contact__info-row">
+                <div className="contact__info-icon">{item.icon}</div>
+                <div>
+                  <div className="contact__info-label">{item.label}</div>
+                  <div className="contact__info-value">{item.value}</div>
+                </div>
+              </div>
+            ))}
+
+            <div className="contact__social">
+              <a href="https://www.facebook.com/delfinici" target="_blank" rel="noopener noreferrer"
+                className="contact__social-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Facebook
+              </a>
+            </div>
+
+            <div className="contact__note">
+              <span>💡</span>
+              <p>Na správy odpovedáme zvyčajne do 1–2 dní. Tešíme sa na teba!</p>
+            </div>
+          </div>
+
+          <div className={`contact__form-wrap fade-up fade-up-delay-2${inView ? ' visible' : ''}`}>
+            {sent ? (
+              <div className="contact__success">
+                <div className="contact__success-icon">🎉</div>
+                <h3>Správa odoslaná!</h3>
+                <p>Ďakujeme. Ozveme sa ti čo najskôr.</p>
+                <button className="btn btn-primary" onClick={() => setSent(false)}>Odoslať ďalšiu</button>
+              </div>
+            ) : (
+              <form className="contact__form" onSubmit={submit}>
+                <div className="form-group">
+                  <label>Meno *</label>
+                  <input type="text" placeholder="Tvoje meno" value={form.name}
+                    onChange={set('name')} required />
+                </div>
+                <div className="form-group">
+                  <label>E-mail *</label>
+                  <input type="email" placeholder="tvoj@email.sk" value={form.email}
+                    onChange={set('email')} required />
+                </div>
+                <div className="form-group">
+                  <label>Správa *</label>
+                  <textarea rows="5"
+                    placeholder="Napíš nám – čo ťa zaujíma, kedy chceš prísť, čo rád hráš…"
+                    value={form.message} onChange={set('message')} required />
+                </div>
+                <button type="submit" className="btn btn-primary contact__submit">
+                  Odoslať správu
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                  </svg>
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,134 @@
+.history {
+  background: #f8fafc;
+}
+
+.history__head {
+  margin-bottom: 56px;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 780px;
+  margin: 0 auto 40px;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 24px;
+  padding-bottom: 8px;
+}
+
+.timeline-item__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+}
+
+.timeline-item__year {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: var(--c-sky);
+  line-height: 1;
+  padding-top: 6px;
+  text-align: right;
+}
+
+.timeline-item__line-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding-top: 12px;
+}
+
+.timeline-item__dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--c-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.timeline-item__line {
+  width: 2px;
+  flex: 1;
+  min-height: 32px;
+  background: linear-gradient(to bottom, var(--c-border), transparent);
+  margin-top: 8px;
+}
+
+.timeline-item__body {
+  padding: 8px 0 40px;
+}
+
+.timeline-item__title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 1.15rem;
+  color: var(--c-ocean-dark);
+  margin-bottom: 10px;
+}
+
+.timeline-item__desc {
+  font-size: .95rem;
+  color: var(--c-text-mid);
+  line-height: 1.75;
+}
+
+/* Callout */
+.history__callout {
+  background: white;
+  border: 1px solid var(--c-border);
+  border-left: 4px solid var(--c-sky);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  max-width: 780px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-sm);
+}
+
+.history__callout-emoji {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.history__callout p {
+  font-size: .97rem;
+  color: var(--c-text-mid);
+  line-height: 1.8;
+  font-style: italic;
+}
+
+@media (max-width: 560px) {
+  .timeline-item {
+    grid-template-columns: 70px 1fr;
+    gap: 16px;
+  }
+
+  .timeline-item__year {
+    font-size: .95rem;
+  }
+
+  .history__callout {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

@@ -1,0 +1,32 @@
+$ORIGIN delfinici.sk.
+$TTL 3600
+
+; SOA – Azure DNS will replace this on import
+@    3600    IN    SOA    ns1-01.azure-dns.com.    azuredns-hostmaster.microsoft.com. (
+                          1          ; serial
+                          3600       ; refresh
+                          300        ; retry
+                          2419200    ; expire
+                          300 )      ; minimum TTL
+
+; NS – Azure DNS will replace these with its own nameservers
+@    3600    IN    NS    ns1-01.azure-dns.com.
+@    3600    IN    NS    ns2-01.azure-dns.net.
+@    3600    IN    NS    ns3-01.azure-dns.org.
+@    3600    IN    NS    ns4-01.azure-dns.info.
+
+; A
+@    3600    IN    A    46.229.230.174
+
+; MX
+@    3600    IN    MX    0    delfinici-sk.mail.protection.outlook.com.
+
+; TXT
+@    3600    IN    TXT    "MS=ms28776642"
+@    3600    IN    TXT    "MS=ms48121296"
+@    3600    IN    TXT    "v=spf1 include:spf.protection.outlook.com -all"
+
+; CNAME
+autodiscover    3600    IN    CNAME    autodiscover.outlook.com.
+www             3600    IN    CNAME    wh.sk.
+*               3600    IN    CNAME   delfinici.sk.

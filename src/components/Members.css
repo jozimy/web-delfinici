@@ -1,0 +1,108 @@
+.members {
+  background: linear-gradient(150deg, #1e3a5f 0%, var(--c-ocean) 60%, var(--c-teal) 100%);
+  position: relative;
+  padding-top: 20px;
+}
+
+.members__bg-wave {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+}
+.members__bg-wave svg { width: 100%; height: 80px; display: block; }
+
+/* Top row: text + info cards */
+.members__top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding-top: 40px;
+  margin-bottom: 56px;
+}
+
+.members__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.members__p {
+  color: rgba(255,255,255,.8);
+  line-height: 1.8;
+  font-size: .98rem;
+  margin-top: 14px;
+}
+
+.members__p strong { color: white; }
+
+.members__btn {
+  margin-top: 28px;
+  background: white;
+  color: var(--c-ocean-dark);
+  box-shadow: 0 4px 20px rgba(0,0,0,.2);
+  align-self: flex-start;
+}
+
+.members__btn:hover {
+  background: var(--c-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,.25);
+}
+
+/* Info cards */
+.members__info-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.members__card {
+  background: rgba(255,255,255,.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  transition: background .2s, transform .2s;
+}
+
+.members__card:hover {
+  background: rgba(255,255,255,.16);
+  transform: translateY(-3px);
+}
+
+.members__card--wide { grid-column: 1 / -1; }
+
+.members__card-icon { font-size: 1.8rem; margin-bottom: 10px; line-height: 1; }
+
+.members__card-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: white;
+  margin-bottom: 6px;
+}
+
+.members__card p {
+  font-size: .85rem;
+  color: rgba(255,255,255,.65);
+  line-height: 1.55;
+}
+
+
+@media (max-width: 900px) {
+  .members__top {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .members__info-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .members__card--wide {
+    grid-column: auto;
+  }
+
+}

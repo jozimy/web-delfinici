@@ -1,6 +1,6 @@
 # Delfínici Website – Progress Tracker
 
-_Last updated: 2026-02-27 (session 2)_
+_Last updated: 2026-03-10 (session 3)_
 
 ## Project Info
 - **Stack**: React 18 + Vite 6, custom CSS (no framework)
@@ -31,6 +31,11 @@ _Last updated: 2026-02-27 (session 2)_
 - [x] DNS zone file created (`delfinici.sk.zone`) for import to Azure DNS
 - [x] `staticwebapp.config.json` – fixed invalid `serve` → `rewrite` in routes
 - [x] Deployed to Azure SWA – https://kind-river-01cf6e303.1.azurestaticapps.net
+- [x] Favicon updated (removed blue circle, dolphin emoji on transparent background)
+- [x] Git repo initialized + pushed to GitHub (jozimy/web-delfinici)
+- [x] GitHub Actions CI/CD – auto-deploy to Azure SWA on push to master
+- [x] `.gitignore` added (node_modules, dist, .env)
+- [x] SEO meta tags (`<title>`, `<meta description>`, Open Graph)
 
 ---
 
@@ -43,8 +48,7 @@ _Last updated: 2026-02-27 (session 2)_
 ## To Do
 
 - [ ] Content review – copy/text accuracy in Slovak
-- [ ] SEO meta tags (`<title>`, `<meta description>`, Open Graph)
-- [ ] Favicon + PWA icons
+- [ ] PWA icons
 - [ ] Accessibility audit (ARIA labels, color contrast, keyboard nav)
 - [ ] Mobile responsiveness QA (all breakpoints)
 - [ ] Form handling for Contact section (backend / email service)

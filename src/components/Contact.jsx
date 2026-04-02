@@ -1,23 +1,13 @@
-import { useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import './Contact.css'
 
 const INFO = [
-  { icon: '✉️', label: 'E-mail',   value: 'delfinici@delfinici.sk' },
+  { icon: '✉️', label: 'E-mail',   value: 'delfinici@delfinici.sk', href: 'mailto:delfinici@delfinici.sk' },
   { icon: '📍', label: 'Adresa',   value: 'Janka Alexyho 9, 841 01, Slovensko' },
 ]
 
 export default function Contact() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 })
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [sent, setSent] = useState(false)
-
-  const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }))
-
-  const submit = (e) => {
-    e.preventDefault()
-    setSent(true)
-  }
 
   return (
     <section id="kontakt" className="section contact">
@@ -38,7 +28,11 @@ export default function Contact() {
                 <div className="contact__info-icon">{item.icon}</div>
                 <div>
                   <div className="contact__info-label">{item.label}</div>
-                  <div className="contact__info-value">{item.value}</div>
+                  <div className="contact__info-value">
+                    {item.href
+                      ? <a href={item.href}>{item.value}</a>
+                      : item.value}
+                  </div>
                 </div>
               </div>
             ))}
@@ -57,40 +51,20 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className={`contact__form-wrap fade-up fade-up-delay-2${inView ? ' visible' : ''}`}>
-            {sent ? (
-              <div className="contact__success">
-                <div className="contact__success-icon">🎉</div>
-                <h3>Správa odoslaná!</h3>
-                <p>Ďakujeme. Ozveme sa ti čo najskôr.</p>
-                <button className="btn btn-primary" onClick={() => setSent(false)}>Odoslať ďalšiu</button>
-              </div>
-            ) : (
-              <form className="contact__form" onSubmit={submit}>
-                <div className="form-group">
-                  <label>Meno *</label>
-                  <input type="text" placeholder="Tvoje meno" value={form.name}
-                    onChange={set('name')} required />
-                </div>
-                <div className="form-group">
-                  <label>E-mail *</label>
-                  <input type="email" placeholder="tvoj@email.sk" value={form.email}
-                    onChange={set('email')} required />
-                </div>
-                <div className="form-group">
-                  <label>Správa *</label>
-                  <textarea rows="5"
-                    placeholder="Napíš nám – čo ťa zaujíma, kedy chceš prísť, čo rád hráš…"
-                    value={form.message} onChange={set('message')} required />
-                </div>
-                <button type="submit" className="btn btn-primary contact__submit">
-                  Odoslať správu
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                  </svg>
-                </button>
-              </form>
-            )}
+          <div className={`contact__mailto fade-up fade-up-delay-2${inView ? ' visible' : ''}`}>
+            <div className="contact__mailto-icon">✉️</div>
+            <h3 className="contact__mailto-title">Napíš nám e-mail</h3>
+            <p className="contact__mailto-text">
+              Zaujíma ťa niečo, chceš sa pripojiť alebo máš otázku? Klikni nižšie a pošli nám správu priamo z tvojho e-mailu.
+            </p>
+            <a href="mailto:delfinici@delfinici.sk?subject=Dopytu%20z%20webu%20delfinici.sk"
+              className="btn btn-primary contact__mailto-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <polyline points="22,4 12,13 2,4"/>
+              </svg>
+              delfinici@delfinici.sk
+            </a>
           </div>
         </div>
       </div>
